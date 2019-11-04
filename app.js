@@ -1,18 +1,30 @@
+// var GroceryList = (props) => (
+//   <div>
+//     <ul>
+//     {props.groceryItems.map((item) => {
+//       return (<li> {item} </li>);
+//     })}
+//     </ul>
+//   </div>
+// );
 var GroceryList = () => (
   <div>
-    <ul>
-      <Apples />
-      <Pears />
-    </ul>
+    <GroceryListItem groceryItems={['apples', 'pears', 'peaches']}/>
   </div>
 );
 
-var Apples = () => (
-  <li>Apples</li>
-);
+const GroceryListItem = (props) => {
+  return (
+    <div>
+      <ul>
+        {props.groceryItems.map((item) => {
+          return (<li>{item}</li>)
+        })}
+      </ul>
+    </div>
+  )
+}
 
-var Pears = () => (
-  <li>Pears</li>
-);
+
 
 ReactDOM.render(<GroceryList />, document.getElementById("app"));
