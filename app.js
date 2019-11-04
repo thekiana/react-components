@@ -12,11 +12,26 @@
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      done: false
+    };
+  }
+
+  onListItemHover() {
+    this.setState({
+      done: !this.state.done
+    });
   }
 
   render() {
+
+    var style = {
+      fontWeight: this.state.done ? 'bold' : 'normal'
+    };
+
     return (
-      <li>{this.props.item}</li>
+      <li style={style} onMouseEnter={this.onListItemHover.bind(this)} onMouseLeave={this.onListItemHover.bind(this)}>{this.props.item}</li>
     );
   }
 
@@ -29,7 +44,5 @@ var GroceryList = (props) => (
     )}
   </ul>
 );
-
-
 
 ReactDOM.render(<GroceryList groceryItems={['apples', 'pears', 'peaches']}/>, document.getElementById("app"));
